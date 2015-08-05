@@ -1,0 +1,46 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Parallax Scrolling Demo</title>
+  <style>
+  body {
+    background-color: #fff;
+  }
+
+  canvas {
+  }
+  </style>
+</head>
+
+<body onload="init();">
+  <div align="center">
+    <canvas id="game-canvas" width="512" height="384"></canvas>
+  </div>
+  <script src="/bower_components/pixi/bin/pixi.dev.js"></script>
+</body>
+<script type="text/javascript">
+function init() {
+  stage = new PIXI.Stage(0x000);
+  renderer = PIXI.autoDetectRenderer(
+    512,
+    384,
+    {view:document.getElementById("game-canvas")}
+  );
+  var farTexture = PIXI.Texture.fromImage("/resources/bg-far.png");
+  far = new PIXI.Sprite(farTexture);
+  far.position.x = 0;
+  far.position.y = 0;
+  stage.addChild(far);
+
+  var midTexture = PIXI.Texture.fromImage("/resources/bg-mid.png");
+  mid = new PIXI.Sprite(midTexture);
+  mid.position.x = 0;
+  mid.position.y = 128;
+  stage.addChild(mid);
+
+  renderer.render(stage);
+}
+</script>
+
+</html>
