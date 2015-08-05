@@ -8,8 +8,7 @@
     background-color: #fff;
   }
 
-  canvas {
-  }
+  canvas {}
   </style>
 </head>
 
@@ -24,8 +23,9 @@ function init() {
   stage = new PIXI.Stage(0x000);
   renderer = PIXI.autoDetectRenderer(
     512,
-    384,
-    {view:document.getElementById("game-canvas")}
+    384, {
+      view: document.getElementById("game-canvas")
+    }
   );
   var farTexture = PIXI.Texture.fromImage("/resources/bg-far.png");
   far = new PIXI.Sprite(farTexture);
@@ -39,7 +39,15 @@ function init() {
   mid.position.y = 128;
   stage.addChild(mid);
 
+  requestAnimFrame(update)
+}
+
+function update() {
+  far.position.x -= 0.128;
+  mid.position.x -= 0.64;
   renderer.render(stage);
+  requestAnimFrame(update);
+
 }
 </script>
 
