@@ -93,15 +93,68 @@ Main.prototype.spriteSheetLoaded = function () {
   this.scroller = new Scroller(this.stage)
   requestAnimFrame(this.update.bind(this))
 
-  var slice1 = PIXI.Sprite.fromFrame('edge_01')
-  slice1.position.x = 32
-  slice1.position.y = 64
-  this.stage.addChild(slice1)
-
-  var slice2 = PIXI.Sprite.fromFrame('decoration_03')
-  slice2.position.x = 128
-  slice2.position.y = 64
-  this.stage.addChild(slice2)
+  this.pool = new WallSpritesPool()
+  this.wallSlices = []
 }
 
 Main.SCROLL_SPEED = 5
+
+Main.prototype.borrowWallSprites = function (num) {
+  for (var i = 0; i < num; i++) {
+    var sprite = this.pool.borrowWindow()
+    sprite.position.x = -32 + (i * 64)
+    sprite.position.y = 128
+
+    this.wallSlices.push(sprite)
+
+    this.stage.addChild(sprite)
+  }
+}
+
+Main.prototype.returnWallSprites = function () {
+  for (var i = 0; i < this.wallSlices.length; i++) {
+    var sprite = this.wallSlices[i]
+    this.stage.removeChild(sprite)
+    this.pool.returnWindow(sprite)
+  }
+
+  this.wallSlices = []
+}
+
+function WallSpritesPool () {
+  this.createWindows()
+}
+
+WallSpritesPool.prototype.createWindows = function () {
+  this.windows = []
+
+  this.addWindowSprites(6, 'window_01')
+  this.addWindowSprites(6, 'window_02')
+
+  this.shuffle(this.windows)
+}
+
+WallSpritesPool.prototype.addWindowSprites = function (amount, frameId) {
+  for (var i = 0; i < amount; i++) {
+    var sprite = PIXI.Sprite.fromFrame(frameId)
+    this.windows.push(sprite)
+  }
+}
+
+WallSpritesPool.prototype.shuffle = function (array) {
+  var len = array.length
+  var shuffles = len * 3
+  for (var i = 0; i < shuffles; i++) {
+    var wallSlice = array.pop()
+    var pos = Math.floor(Math.random() * (len - 1))
+    array.splice(pos, 0, wallSlice)
+  }
+}
+
+WallSpritesPool.prototype.borrowWindow = function () {
+  return this.windows.shift()
+}
+
+WallSpritesPool.prototype.returnWindow = function (sprite) {
+  this.windows.push(sprite)
+}
