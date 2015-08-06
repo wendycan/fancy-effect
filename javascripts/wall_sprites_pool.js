@@ -26,27 +26,27 @@ WallSpritesPool.prototype.createDecorations = function () {
 }
 
 WallSpritesPool.prototype.createFrontEdges = function () {
-  this.frontEdges = [];
+  this.frontEdges = []
 
   this.addFrontEdgeSprites(2, "edge_01")
   this.addFrontEdgeSprites(2, "edge_02")
 
   this.shuffle(this.frontEdges)
-};
+}
 
 WallSpritesPool.prototype.createBackEdges = function () {
-  this.backEdges = [];
+  this.backEdges = []
 
   this.addBackEdgeSprites(2, "edge_01")
   this.addBackEdgeSprites(2, "edge_02")
 
   this.shuffle(this.backEdges)
-};
+}
 
 WallSpritesPool.prototype.createSteps = function () {
-  this.steps = [];
+  this.steps = []
   this.addStepSprites(2, "step_01")
-};
+}
 
 WallSpritesPool.prototype.addWindowSprites = function (amount, frameId) {
   for (var i = 0; i < amount; i++) {
@@ -60,14 +60,14 @@ WallSpritesPool.prototype.addDecorationSprites = function (amount, frameId) {
     var sprite = new PIXI.Sprite(PIXI.Texture.fromFrame(frameId))
     this.decorations.push(sprite)
   }
-};
+}
 
 WallSpritesPool.prototype.addFrontEdgeSprites = function (amount, frameId) {
   for (var i = 0; i < amount; i++) {
     var sprite = new PIXI.Sprite(PIXI.Texture.fromFrame(frameId))
     this.frontEdges.push(sprite)
   }
-};
+}
 
 WallSpritesPool.prototype.addBackEdgeSprites = function (amount, frameId) {
   for (var i = 0; i < amount; i++) {
@@ -76,7 +76,7 @@ WallSpritesPool.prototype.addBackEdgeSprites = function (amount, frameId) {
     sprite.scale.x = -1;
     this.backEdges.push(sprite)
   }
-};
+}
 
 WallSpritesPool.prototype.addStepSprites = function (amount, frameId) {
   for (var i = 0; i < amount; i++) {
@@ -84,7 +84,7 @@ WallSpritesPool.prototype.addStepSprites = function (amount, frameId) {
     sprite.anchor.y = 0.25;
     this.steps.push(sprite)
   }
-};
+}
 
 WallSpritesPool.prototype.shuffle = function (array) {
   var len = array.length
@@ -106,33 +106,33 @@ WallSpritesPool.prototype.returnWindow = function (sprite) {
 
 WallSpritesPool.prototype.borrowDecoration = function () {
   return this.decorations.shift()
-};
+}
 
 WallSpritesPool.prototype.returnDecoration = function (sprite) {
   this.decorations.push(sprite)
-};
+}
 
 WallSpritesPool.prototype.borrowFrontEdge = function () {
   return this.frontEdges.shift()
-};
+}
 
 WallSpritesPool.prototype.returnFrontEdge = function (sprite) {
   this.frontEdges.push(sprite)
-};
+}
 
 WallSpritesPool.prototype.borrowBackEdge = function () {
   return this.backEdges.shift()
-};
+}
 
 WallSpritesPool.prototype.returnBackEdge = function (sprite) {
   this.backEdges.push(sprite)
-};
+}
 
 WallSpritesPool.prototype.borrowStep = function () {
   return this.steps.shift()
-};
+}
 
 WallSpritesPool.prototype.returnStep = function (sprite) {
   this.steps.push(sprite)
-};
+}
 

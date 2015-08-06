@@ -73,7 +73,7 @@ Main.prototype.generateTestWallSpan = function () {
     this.pool.borrowStep, // 4th slice
     this.pool.borrowWindow, // 5th slice
     this.pool.borrowBackEdge // 6th slice
-  ];
+  ]
 
   var yPos = [
     128, // 1st slice
@@ -82,40 +82,19 @@ Main.prototype.generateTestWallSpan = function () {
     192, // 4th slice
     192, // 5th slice
     192 // 6th slice
-  ];
+  ]
 
   for (var i = 0; i < lookupTable.length; i++) {
-    var func = lookupTable[i];
+    var func = lookupTable[i]
 
     var sprite = func.call(this.pool)
     sprite.position.x = 64 + (i * 64)
-    sprite.position.y = yPos[i];
+    sprite.position.y = yPos[i]
 
     this.wallSlices.push(sprite)
 
     this.stage.addChild(sprite)
   }
-  // var lookupTable = [
-  //   this.pool.borrowFrontEdge,  // 1st slice
-  //   this.pool.borrowWindow,     // 2nd slice
-  //   this.pool.borrowDecoration, // 3rd slice
-  //   this.pool.borrowWindow,     // 4th slice
-  //   this.pool.borrowDecoration, // 5th slice
-  //   this.pool.borrowWindow,     // 6th slice
-  //   this.pool.borrowBackEdge    // 7th slice
-  // ];
-  // for (var i = 0; i < lookupTable.length; i++)
-  // {
-  //   var func = lookupTable[i];
-
-  //   var sprite = func.call(this.pool)
-  //   sprite.position.x = 32 + (i * 64)
-  //   sprite.position.y = 128;
-
-  //   this.wallSlices.push(sprite)
-
-  //   this.stage.addChild(sprite)
-  // }
 }
 
 Main.prototype.clearTestWallSpan = function () {
@@ -126,36 +105,16 @@ Main.prototype.clearTestWallSpan = function () {
     this.pool.returnStep, // 4th slice
     this.pool.returnWindow, // 5th slice
     this.pool.returnBackEdge // 6th slice
-  ];
+  ]
 
   for (var i = 0; i < lookupTable.length; i++) {
-    var func = lookupTable[i];
-    var sprite = this.wallSlices[i];
+    var func = lookupTable[i]
+    var sprite = this.wallSlices[i]
 
     this.stage.removeChild(sprite)
     func.call(this.pool, sprite)
   }
 
-  this.wallSlices = [];
-  // var lookupTable = [
-  //   this.pool.returnFrontEdge,  // 1st slice
-  //   this.pool.returnWindow,     // 2nd slice
-  //   this.pool.returnDecoration, // 3rd slice
-  //   this.pool.returnWindow,     // 4th slice
-  //   this.pool.returnDecoration, // 5th slice
-  //   this.pool.returnWindow,     // 6th slice
-  //   this.pool.returnBackEdge    // 7th slice
-  // ];
-
-  // for (var i = 0; i < lookupTable.length; i++)
-  // {
-  //   var func = lookupTable[i];
-  //   var sprite = this.wallSlices[i];
-
-  //   this.stage.removeChild(sprite)
-  //   func.call(this.pool, sprite)
-  // }
-
-  // this.wallSlices = [];
-};
+  this.wallSlices = []
+}
 
