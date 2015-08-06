@@ -72,15 +72,36 @@ function Main () {
     384,
     {view: document.getElementById('game-canvas')}
   )
-  this.scroller = new Scroller(this.stage)
 
-  requestAnimFrame(this.update.bind(this))
+  this.loadSpriteSheet()
 }
 
 Main.prototype.update = function () {
   this.scroller.moveViewportXBy(Main.SCROLL_SPEED)
   this.renderer.render(this.stage)
   requestAnimFrame(this.update.bind(this))
+}
+
+Main.prototype.loadSpriteSheet = function () {
+  var assetsToLoad = ['/resources/wall.json']
+  loader = new PIXI.AssetLoader(assetsToLoad)
+  loader.onComplete = this.spriteSheetLoaded.bind(this)
+  loader.load()
+}
+
+Main.prototype.spriteSheetLoaded = function () {
+  this.scroller = new Scroller(this.stage)
+  requestAnimFrame(this.update.bind(this))
+
+  var slice1 = PIXI.Sprite.fromFrame('edge_01')
+  slice1.position.x = 32
+  slice1.position.y = 64
+  this.stage.addChild(slice1)
+
+  var slice2 = PIXI.Sprite.fromFrame('decoration_03')
+  slice2.position.x = 128
+  slice2.position.y = 64
+  this.stage.addChild(slice2)
 }
 
 Main.SCROLL_SPEED = 5
