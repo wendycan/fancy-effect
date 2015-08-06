@@ -27,3 +27,16 @@ Mid.prototype = Object.create(PIXI.TilingSprite.prototype)
 Mid.prototype.update = function () {
   this.tilePosition.x -= 0.64
 }
+
+function Scroller (state) {
+  this.far = new Far()
+  stage.addChild(this.far)
+
+  this.mid = new Mid()
+  stage.addChild(this.mid)
+}
+
+Scroller.prototype.update = function () {
+  this.far.update()
+  this.mid.update()
+}

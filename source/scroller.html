@@ -28,18 +28,12 @@ function init() {
       view: document.getElementById("game-canvas")
     }
   );
-  far = new Far();
-  stage.addChild(far);
-
-  mid = new Mid();
-  stage.addChild(mid);
-
-  requestAnimFrame(update)
+  scroller = new Scroller(stage);
+  requestAnimFrame(update);
 }
 
 function update() {
-  far.update();
-  mid.update();
+  scroller.update();
 
   renderer.render(stage);
   requestAnimFrame(update);
