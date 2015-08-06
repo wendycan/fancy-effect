@@ -5,12 +5,18 @@ function Far () {
   this.position.y = 0
   this.tilePosition.x = 0
   this.tilePosition.y = 0
+  this.viewportX = 0
 }
 
 Far.constructor = Far
 Far.prototype = Object.create(PIXI.TilingSprite.prototype)
-Far.prototype.update = function () {
-  this.tilePosition.x -= 0.128
+
+Far.DELTA_X = 0.128
+
+Far.prototype.setViewportX = function (newViewportX) {
+  var distanceTravelled = newViewportX - this.viewportX
+  this.viewportX = newViewportX
+  this.tilePosition.x -= (distanceTravelled * Far.DELTA_X)
 }
 
 function Mid () {
@@ -20,23 +26,61 @@ function Mid () {
   this.position.y = 128
   this.tilePosition.x = 0
   this.tilePosition.y = 0
+  this.viewportX = 0
 }
+
+Mid.DELTA_X = 0.64
 
 Mid.constructor = Mid
 Mid.prototype = Object.create(PIXI.TilingSprite.prototype)
-Mid.prototype.update = function () {
-  this.tilePosition.x -= 0.64
+
+Mid.prototype.setViewportX = function (newViewportX) {
+  var distanceTravelled = newViewportX - this.viewportX
+  this.viewportX = newViewportX
+  this.tilePosition.x -= (distanceTravelled * Mid.DELTA_X)
 }
 
-function Scroller (state) {
+function Scroller (stage) {
   this.far = new Far()
   stage.addChild(this.far)
 
   this.mid = new Mid()
   stage.addChild(this.mid)
+
+  this.viewportX = 0
 }
 
-Scroller.prototype.update = function () {
-  this.far.update()
-  this.mid.update()
+Scroller.prototype.setViewportX = function (viewportX) {
+  this.viewportX = viewportX
+  this.far.setViewportX(viewportX)
+  this.mid.setViewportX(viewportX)
 }
+
+Scroller.prototype.getViewportX = function () {
+  return this.viewportX
+}
+
+Scroller.prototype.moveViewportXBy = function (units) {
+  var newViewportX = this.viewportX + units
+  this.setViewportX(newViewportX)
+}
+
+function Main () {
+  this.stage = new PIXI.Stage(0x66FF99)
+  this.renderer = new PIXI.autoDetectRenderer(
+    512,
+    384,
+    {view: document.getElementById('game-canvas')}
+  )
+  this.scroller = new Scroller(this.stage)
+
+  requestAnimFrame(this.update.bind(this))
+}
+
+Main.prototype.update = function () {
+  this.scroller.moveViewportXBy(Main.SCROLL_SPEED)
+  this.renderer.render(this.stage)
+  requestAnimFrame(this.update.bind(this))
+}
+
+Main.SCROLL_SPEED = 5

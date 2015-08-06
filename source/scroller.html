@@ -21,23 +21,7 @@
 </body>
 <script type="text/javascript">
 function init() {
-  stage = new PIXI.Stage(0x000);
-  renderer = PIXI.autoDetectRenderer(
-    512,
-    384, {
-      view: document.getElementById("game-canvas")
-    }
-  );
-  scroller = new Scroller(stage);
-  requestAnimFrame(update);
-}
-
-function update() {
-  scroller.update();
-
-  renderer.render(stage);
-  requestAnimFrame(update);
-
+  main = new Main();
 }
 </script>
 
