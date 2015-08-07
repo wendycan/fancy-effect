@@ -1,0 +1,22 @@
+@font-face {
+  font-family: JosefinSans;
+  font-weight: 500;
+  src: url(/fonts/JosefinSans-Bold.ttf);
+}
+
+@font-face {
+  font-family: JosefinSans;
+  font-weight: 400;
+  src: url(/fonts/JosefinSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: JosefinSans;
+  font-weight: 300;
+  src: url(/fonts/JosefinSans-Light.ttf);
+}
+
+@font-face {
+  font-family: Pacifico;
+  src: url(/fonts/Pacifico.ttf);
+}
