@@ -38,7 +38,7 @@ function loadObject () {
   tree5 = new Tree(770, 450, 0)
   trees.push(tree5)
 
-  butterfly = new Butterfly(0, 200, -1)
+  butterfly = new Butterfly(0, 200, -0.3)
 
   for (var i = clouds.length - 1; i >= 0; i--) {
     stage.addChild(clouds[i])
