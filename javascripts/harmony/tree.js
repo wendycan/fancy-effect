@@ -11,8 +11,8 @@ function Tree (x, y, speed) {
   this.viewportY = y
 }
 
-Tree.prototype.constructor = Tree
 Tree.prototype = Object.create(PIXI.Sprite.prototype)
+Tree.prototype.constructor = Tree
 
 Tree.prototype.setViewportX = function (newViewportX) {
   this.viewportX = this.checkViewportXBounds(newViewportX)

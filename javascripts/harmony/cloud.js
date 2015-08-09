@@ -11,8 +11,8 @@ function Cloud (x, y, speed) {
   this.viewportX = x
 }
 
-Cloud.prototype.constructor = Cloud
 Cloud.prototype = Object.create(PIXI.Sprite.prototype)
+Cloud.prototype.constructor = Cloud
 
 Cloud.prototype.setViewportX = function (newViewportX) {
   this.viewportX = this.checkViewportXBounds(newViewportX)

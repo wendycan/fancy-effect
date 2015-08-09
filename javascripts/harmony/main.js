@@ -38,6 +38,8 @@ function loadObject () {
   tree5 = new Tree(770, 450, 0)
   trees.push(tree5)
 
+  butterfly = new Butterfly(0, 200, -1)
+
   for (var i = clouds.length - 1; i >= 0; i--) {
     stage.addChild(clouds[i])
   };
@@ -46,6 +48,7 @@ function loadObject () {
     stage.addChild(trees[i])
   };
 
+  stage.addChild(butterfly)
 }
 
 function update () {
@@ -57,6 +60,9 @@ function update () {
   for (var i = 0; i < trees.length; i++) {
     trees[i].scaleY()
   }
+
+  butterfly.setViewportX(butterfly.viewportX - butterfly.speed)
+  butterfly.moveY()
 
   renderer.render(stage)
   requestAnimFrame(update)
