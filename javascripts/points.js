@@ -25,13 +25,16 @@ function start() {
 
   var ballTexture = new PIXI.Texture.fromImage("/resources/pixel.png");
 
-  renderer = PIXI.autoDetectRenderer(w, h);
+   renderer = new PIXI.autoDetectRenderer(
+    w,
+    h, {
+      view: document.getElementById('game-canvas')
+    }
+  )
 
   stage = new PIXI.Stage;
 
-  document.body.appendChild(renderer.view);
-
-  makeObject(0);
+  makeObject(5);
 
   for (var i = 0; i < n; i++) {
     tpoint1[i] = points1[i];
@@ -70,7 +73,6 @@ function nextObject() {
 }
 
 function makeObject(t) {
-
   var xd;
 
   switch (t) {
