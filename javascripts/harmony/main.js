@@ -8,7 +8,7 @@ function init() {
   )
 
   loadObject()
-  requestAnimFrame(update)
+  update()
 }
 
 function loadObject () {
