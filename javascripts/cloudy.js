@@ -2,7 +2,7 @@
   var stage, textStage, textCTX, form, input;
   var clouds, textPixels, textFormed;
   var offsetX, offsetY, text, renderer;
-  var cloudBitmaps = ['https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/cloud-0.png', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/cloud-1.png', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/cloud-2.png', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/cloud-3.png', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/53148/cloud-4.png'];
+  var cloudBitmaps = ['/images/cloud-0.png', '/images/cloud-1.png', '/images/cloud-2.png', '/images/cloud-3.png', '/images/cloud-4.png'];
 
   function init() {
     initStages();
