@@ -1,0 +1,49 @@
+body {
+  background: #28abf6;
+}
+
+* {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+input[type="text"] {
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px;
+  font-size: 18px;
+  width: 200px;
+  text-transform: uppercase;
+  top: 30px;
+  left: 130px;
+  background: none;
+  color: #fff;
+}
+
+input[type="submit"] {
+  display: block;
+  width: 100px;
+  border: 1px solid #fff;
+  line-height: 35px;
+  border-radius: 5px;
+  height: 35px;
+  color: #fff;
+  font-size: 18px;
+  top: 30px;
+  left: 350px;
+  cursor: pointer;
+  background: transparent;
+}
+
+input[type="submit"]:hover {
+  background: #fff;
+  color: #28abf6;
+}
+
+form {
+  width: 600px;
+  height: 100px;
+  position: absolute;
+  z-index: 100;
+}
