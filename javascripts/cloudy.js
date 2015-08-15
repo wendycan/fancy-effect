@@ -156,26 +156,26 @@
 
     if (fontSize > 160) fontSize = 160;
     textCTX.clearRect(0, 0, 600, 200);
-    textCTX.font = "400 " + fontSize + "px 'Source Sans Pro'";
+    textCTX.font = "400 " + fontSize + "px 'Source Sans Pro'"; // [font-weight, font-size, font-family]
     textCTX.textAlign = 'center';
-    textCTX.textBaseline = 'top';
-    textCTX.fillText(t, 300, (172 - fontSize) / 2);
+    textCTX.textBaseline = 'top';  // default alphabetic
+    textCTX.fillText(t, 300, (172 - fontSize) / 2); // [text, x, y, maxWidth] why 300 ?
 
     var ctx = document.getElementById('text').getContext('2d');
     var pix = ctx.getImageData(0, 0, 600, 200).data;
+    window.canvas = ctx;
     textPixels = [];
     for (var i = pix.length; i >= 0; i -= 4) {
       if (pix[i] != 0) {
-        var x = (i / 4) % 600;
-        var y = Math.floor(Math.floor(i / 600) / 4);
-
+        var x = (i / 4) % 600; // For every pixel in an ImageData object there are four pieces of information, the RGBA values.
+        var y = Math.floor(Math.floor(i / 600) / 4); // 600 is the width of the canvas
         if ((x && x % 12 == 0) && (y && y % 12 == 0)) textPixels.push({
           x: x,
           y: y
         });
       }
     }
-
+    // console.log(textPixels.length)
     formText();
 
   }
