@@ -4,7 +4,8 @@
   "dependencies": {
     "d3": "~3.4.6",
     "pixi": "2.2.7",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "fabric": "~1.5.0"
   },
   "private": true
 }
