@@ -4,18 +4,88 @@
 <head>
   <title></title>
   <style>
-    rect {
+    body {
+      margin: 0;
+    }
+    svg {
+      border: solid 1px #d5d5d5;
+      stroke-width: 2;
+      stroke: black;
       fill: none;
-      stroke: green;
-      stroke-width: 5;
+    }
+    text {
+      font-size: 20px;
+      font-family: cursive;
+      stroke: black;
     }
   </style>
 </head>
 
 <body>
-  <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 500 500">
-    <rect x="10" y="10" width="400" height="200"></rect>
+  <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+    <text x="10" y="30">Peace comes from within. Do not seek it without! </text>
+    <text x="10" y="60"><tspan font-weight="bold">Peace</tspan> comes from within. Do not seek it <tspan stroke-width="1" dy="5" rotate="20 -15">without</tspan>! </text>
+
+    <text x="490" y="90" text-anchor='end'>Peace comes from within. Do not seek it without! </text>
+    <text x="250" y="120" text-anchor='middle'>Peace comes from within. Do not seek it without! </text>
+    <text x="10" y="170" style="font-family:serif;stroke:orange">C
+      <tspan baseline-shift="sub">12
+      </tspan baseline-shift="sub">H
+      <tspan baseline-shift="sub">22
+      </tspan>O
+      <tspan baseline-shift="sub">11
+      </tspan>
+    </text>
+
+    <text x="10" y="200" transform="rotate(90,10,200)">HELLO</text>
+    <text x="50" y="200" writing-mode="tb">HELLO</text>
+    <text x="100" y="200" writing-mode="tb" glyph-orientation-vertical="0">HELLO</text>
+    <text x="490" y="200" direction="rtl" unicode-bidi="bidi-override" style="font-size: 30px;font-family: monospace;">慎终追远</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+    <defs>
+      <path id="path" d="M30 40 C 50 10,70 10,120 40 S 150 0,200 40" fill="none" stroke="gray"></path>
+    </defs>
+    <g>
+      <!-- <use xlink:href="#path" /> -->
+      <text style="font-size: 12px;font-family: monospace;stroke:orange;">
+        <textPath xlink:href="#path">Following a cubic Bezier cruve.</textPath>
+      </text>
+    </g>
+    <g stroke-width="2" id="taichi">
+      <path d="M200,100 A100,100 0 1,0 200,300" fill="white"></path>
+      <path d="M200,100 A100,100 0 1,1 200,300" fill="black"></path>
+
+      <circle cx="200" cy="150" r="50" fill="white" stroke="none"></circle>
+      <circle cx="200" cy="250" r="50" fill="black" stroke="none"></circle>
+
+      <circle cx="200" cy="150" r="8" fill="black"></circle>
+      <circle cx="200" cy="250" r="8" fill="white"></circle>
+
+      <circle cx="200" cy="200" r="100" stroke="black" stroke-width="3"></circle>
+
+      <path id="white" d="M160,100 A60,80 0 1,0 160,300" fill="none" stroke="none"></path>
+      <path id="black" d="M230,100 A60,80 0 1,1 230,300" fill="none" stroke="none"></path>
+
+      <text writing-mode="tb" glyph-orientation-vertical="0" style="font-size: 25px;">
+        <textPath xlink:href="#white">道可道 非常道</textPath>
+      </text>
+      <text writing-mode="tb" glyph-orientation-vertical="0" style="font-size: 25px;">
+        <textPath xlink:href="#black">名可名 非常名</textPath>
+      </text>
+    </g>
   </svg>
 </body>
-
+<script type="text/javascript">
+  window.addEventListener('load', function () {
+    var el = document.querySelector('#taichi');
+    var cx = el.getBoundingClientRect().left - 500 + 122;
+    var cy = el.getBoundingClientRect().top + 115;
+    var angle = 0;
+    setInterval(function () {
+      angle += 1;
+      el.setAttribute('transform', 'rotate(' + angle + '0, ' + cx + ',' + cy + ')')
+    }, 200)
+  });
+</script>
 </html>
