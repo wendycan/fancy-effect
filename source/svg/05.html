@@ -5,7 +5,8 @@
   <title>文本</title>
   <style>
     body {
-      margin: 0;
+      width: 920px;
+      margin: 30px auto;
     }
     svg {
       border: solid 1px #d5d5d5;
@@ -79,8 +80,8 @@
 <script type="text/javascript">
   window.addEventListener('load', function () {
     var el = document.querySelector('#taichi');
-    var cx = el.getBoundingClientRect().left - 500 + 122;
-    var cy = el.getBoundingClientRect().top + 115;
+    var cx = 200;
+    var cy = 200;
     var angle = 0;
     setInterval(function () {
       angle += 1;
