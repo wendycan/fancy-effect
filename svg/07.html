@@ -107,13 +107,17 @@
     </defs>
     <use xlink:href="#flower2" filter="url(#blur)"></use>
   </svg>
+
   <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
     <defs>
       <filter id="blur">
+        <feMorphology operator="erode" radius="20" />
+        <!-- <feMorphology operator="dilate" radius="20" /> -->
       </filter>
     </defs>
     <use xlink:href="#flower2" filter="url(#blur)"></use>
   </svg>
+
   <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
     <defs>
       <filter id="blur">
@@ -145,6 +149,18 @@
   //   }, 100);
   // });
 
-
+  // Erode
+  // window.addEventListener('load', function () {
+  //   var r = 20;
+  //   var el = document.querySelector('#blur feMorphology');
+  //   var interval_id = setInterval(function () {
+  //     r -= 0.5;
+  //     if (r < 0) {
+  //       r = 0;
+  //       clearInterval(interval_id);
+  //     }
+  //     el.setAttribute('radius', r);
+  //   }, 50)
+  // })
 </script>
 </html>
