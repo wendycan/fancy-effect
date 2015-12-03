@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>滤镜</title>
+  <style>
+  svg {
+    fill: none;
+    stroke: orange;
+    stroke-width: 5;
+    border: solid 1px #d5d5d5;
+  }
+  body {
+    width: 920px;
+    margin: auto;
+  }
+  </style>
+</head>
+
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+    <defs>
+      <filter id="drop-shadow">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+      </filter>
+      <filter id="drop-shadow2">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur" />
+        <feOffset in="blur" dx="4" dy="4" result="offsetBlur" />
+        <feMerge>
+          <feMergeNode in="offsetBlur" />
+          <feMergeNode in="SourceAlpha" />
+        </feMerge>
+      </filter>
+      <g id="flower" transform="scale(2) translate(-80, -200)">
+        <polygon points="135,237.5 137.9,246.1 146.9,246.1 139.7,251.5 142.3,260.1 135,255 127.7,260.1 130.1,251.5 123.1,246.1 132.1,246.1" />
+      </g>
+    </defs>
+    <use xlink:href="#flower" filter="url(#drop-shadow)" transform="translate(4,4)"></use>
+    <use xlink:href="#flower"></use>
+    <use xlink:href="#flower" filter="url(#drop-shadow2)" transform="translate(0,100)"></use>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+    <defs>
+      <filter id="glow">
+        <feColorMatrix type="matrix" values=
+            "0 0 0 0 0
+             0 0 0 0.9 0
+             0 0 0 0.9 0
+             0 0 0 1 0
+            " />
+        <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+        <feMerge>
+          <feMergeNode in="coloredBlur" />
+          <!-- <feMergeNode in="SourceAlpha" /> -->
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <text x="120" y="50" filter="url(#glow)" style="fill:#033" font-size="20" font-family="serif" stroke-width="2">Spring</text>
+  </svg>
+  <br/>
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+    <defs>
+      <g id="flower2">
+        <image xlink:href="/images/flower2.svg" x="0" y="0" width="300" height="300" transform="scale(2) translate(-100, -10)"></image>
+      </g>
+    </defs>
+    <use xlink:href="#flower2"></use>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+    <defs>
+      <filter id="blur">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur" />
+        </feMerge>
+      </filter>
+    </defs>
+    <use xlink:href="#flower2" filter="url(#blur)"></use>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+    <defs>
+      <filter id="blur">
+        <feColorMatrix type="matrix" values=
+          "0 0 1 0.5 0.4
+           0 1 0 0.5 0
+           1 0 0 0.5 0
+           0 0 0 1 0
+          " />
+        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur" />
+        </feMerge>
+      </filter>
+    </defs>
+    <use xlink:href="#flower2" filter="url(#blur)"></use>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+    <defs>
+      <filter id="blur">
+        <feImage xlink:href="/images/cloud.png" x="0" y="-300" result="cloud"/>
+        <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur" />
+        <feOffset in="blur" dx="4" dy="4" result="offsetBlur" />
+        <!-- <feBlood flood-color="#000" flood-opacity="0.8" result="tint" /> -->
+        <feMerge>
+          <!-- <feMergeNode in="tint"/> -->
+          <feMergeNode in="SourceGraphic"/>
+          <feMergeNode in="cloud" />
+        </feMerge>
+      </filter>
+    </defs>
+    <use xlink:href="#flower2" filter="url(#blur)"></use>
+  </svg>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+    <defs>
+      <filter id="blur">
+        <feMorphology operator="erode" radius="2" id="erode"/>
+      </filter>
+    </defs>
+    <use xlink:href="#flower2" filter="url(#blur)"></use>
+  </svg>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+    <defs>
+      <filter id="blur">
+        <feMorphology operator="dilate" radius="20" id="dilate"/>
+      </filter>
+    </defs>
+    <use xlink:href="#flower2" filter="url(#blur)"></use>
+  </svg>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+    <defs>
+      <filter id="blur">
+        <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="20" seed="2"/>
+      </filter>
+    </defs>
+    <use xlink:href="#flower2" filter="url(#blur)"></use>
+  </svg>
+</body>
+
+<script type="text/javascript">
+  // Fade In
+  // window.addEventListener('load', function () {
+  //   var blur = 2;
+  //   var el = document.querySelector('#blur feGaussianBlur');
+  //   var interval_id = setInterval(function () {
+  //     blur -= 0.05
+  //     if (blur < 0) {
+  //       blur = 0;
+  //       clearInterval(interval_id);
+  //     }
+  //     el.setAttribute('stdDeviation', blur);
+  //   }, 100);
+  // });
+
+  // Erode and dilate
+  window.addEventListener('load', function () {
+    // var r = 20;
+    // var el = document.querySelector('#erode');
+    // var interval_id = setInterval(function () {
+    //   r -= 0.5;
+    //   if (r < 0) {
+    //     r = 0;
+    //     clearInterval(interval_id);
+    //   }
+    //   el.setAttribute('radius', r);
+    // }, 50);
+
+    // var r2 = 20;
+    // var el2 = document.querySelector('#dilate');
+    // var interval_id = setInterval(function () {
+    //   r2 -= 0.5;
+    //   if (r2 < 0) {
+    //     r2 = 0;
+    //     clearInterval(interval_id);
+    //   }
+    //   el2.setAttribute('radius', r);
+    // }, 50)
+  })
+</script>
+</html>

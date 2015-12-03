@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>路径</title>
+  <style>
+  svg {
+    fill: none;
+    stroke: green;
+    stroke-width: 5;
+    border: solid 1px #d5d5d5;
+  }
+
+  body {
+    width: 920px;
+    margin: auto;
+  }
+  </style>
+</head>
+
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 400 400">
+    <path d="M 10,110 L 110,10 L 210,110 L 110,210 Z"></path>
+    <path d="M 300,400 300,300 L 400,300 Z" fill="yellow"></path>
+  </svg>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 400 400">
+    <path d="M 10,110 L 110,10 L 210,110 L 110,210 Z"></path>
+    <path d="M 300,400 v -100 h 100 Z" fill="yellow"></path>
+  </svg>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 400 400">
+    <path d="M10,110 110,10 210,110 110,210Z"></path>
+    <path d="M300,400v-100h100Z" fill="yellow"></path>
+  </svg>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 600 600">
+    <path d="M100,220 A 100,100 0 0 1 210,220" stroke="orange"></path>
+    <path d="M100,220 A 100,100 0 1 1 210,220"></path>
+
+    <path d="M10,180 A 100,100 0 0 0 310,180"></path>
+    <path d="M10,180 A 50,50 0 0 0 410,180" stroke="red"></path>
+
+    <path d="M110,550 A 200,100 0 1 1 310,550" stroke="purple"></path>
+  </svg>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 600 600">
+    <path d="M30 100 Q80,30 100,100 130,65 200,80"></path>
+    <path d="M30 200 Q80,130 100,200 T200,180"></path>
+  </svg>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 600 600">
+    <path d="M30 100 C30,30 70,20 100,100 110,130 45,150 65,100"></path>
+  </svg>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 600 600">
+    <defs>
+      <marker id="circle" markerWidth="10" markerHeight="10" refX="5" refY="5">
+        <circle cx="5" cy="5" r="4" fill="none" stroke="red" stroke-width="1"></circle>
+      </marker>
+      <marker id="arrow" markerWidth="4" markerHeight="8" refX="0" refY="4" orient="auto">
+        <path d="M0 0 4 4 0 8" fill="none" stroke="red" stroke-width="1"></path>
+      </marker>
+      <marker id="triangle" markerWidth="5" markerHeight="10" refX="5" refY="5" orient="auto">
+        <path d="M0 0 5 5 0 10 Z" fill="red" stroke="none"></path>
+      </marker>
+    </defs>
+    <path d="M50 30 200,30 A 20,30 0 0 1 220 50 L220,210" marker-start="url(#circle)" marker-mid="url(#arrow)" marker-end="url(#triangle)" transform="scale(1.2)"></path>
+  </svg>
+</body>
+
+</html>
