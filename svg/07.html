@@ -10,6 +10,10 @@
     stroke-width: 5;
     border: solid 1px #d5d5d5;
   }
+  body {
+    width: 920px;
+    margin: auto;
+  }
   </style>
 </head>
 
@@ -111,8 +115,7 @@
   <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
     <defs>
       <filter id="blur">
-        <feMorphology operator="erode" radius="20" />
-        <!-- <feMorphology operator="dilate" radius="20" /> -->
+        <feMorphology operator="erode" radius="2" id="erode"/>
       </filter>
     </defs>
     <use xlink:href="#flower2" filter="url(#blur)"></use>
@@ -121,13 +124,16 @@
   <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
     <defs>
       <filter id="blur">
+        <feMorphology operator="dilate" radius="20" id="dilate"/>
       </filter>
     </defs>
     <use xlink:href="#flower2" filter="url(#blur)"></use>
   </svg>
+
   <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
     <defs>
       <filter id="blur">
+        <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="20" seed="2"/>
       </filter>
     </defs>
     <use xlink:href="#flower2" filter="url(#blur)"></use>
@@ -149,18 +155,29 @@
   //   }, 100);
   // });
 
-  // Erode
-  // window.addEventListener('load', function () {
-  //   var r = 20;
-  //   var el = document.querySelector('#blur feMorphology');
-  //   var interval_id = setInterval(function () {
-  //     r -= 0.5;
-  //     if (r < 0) {
-  //       r = 0;
-  //       clearInterval(interval_id);
-  //     }
-  //     el.setAttribute('radius', r);
-  //   }, 50)
-  // })
+  // Erode and dilate
+  window.addEventListener('load', function () {
+    // var r = 20;
+    // var el = document.querySelector('#erode');
+    // var interval_id = setInterval(function () {
+    //   r -= 0.5;
+    //   if (r < 0) {
+    //     r = 0;
+    //     clearInterval(interval_id);
+    //   }
+    //   el.setAttribute('radius', r);
+    // }, 50);
+
+    // var r2 = 20;
+    // var el2 = document.querySelector('#dilate');
+    // var interval_id = setInterval(function () {
+    //   r2 -= 0.5;
+    //   if (r2 < 0) {
+    //     r2 = 0;
+    //     clearInterval(interval_id);
+    //   }
+    //   el2.setAttribute('radius', r);
+    // }, 50)
+  })
 </script>
 </html>
