@@ -53,6 +53,20 @@
     <path d="M30 100 C30,30 70,20 100,100 110,130 45,150 65,100"></path>
   </svg>
 
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 600 600">
+    <defs>
+      <marker id="circle" markerWidth="10" markerHeight="10" refX="5" refY="5">
+        <circle cx="5" cy="5" r="4" fill="none" stroke="red" stroke-width="1"></circle>
+      </marker>
+      <marker id="arrow" markerWidth="4" markerHeight="8" refX="0" refY="4" orient="auto">
+        <path d="M0 0 4 4 0 8" fill="none" stroke="red" stroke-width="1"></path>
+      </marker>
+      <marker id="triangle" markerWidth="5" markerHeight="10" refX="5" refY="5" orient="auto">
+        <path d="M0 0 5 5 0 10 Z" fill="red" stroke="none"></path>
+      </marker>
+    </defs>
+    <path d="M50 30 200,30 A 20,30 0 0 1 220 50 L220,210" marker-start="url(#circle)" marker-mid="url(#arrow)" marker-end="url(#triangle)" transform="scale(1.2)"></path>
+  </svg>
 </body>
 
 </html>
