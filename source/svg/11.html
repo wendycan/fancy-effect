@@ -30,12 +30,77 @@
     border-radius: 5px;
     display: none;
   }
+
   #svg2 {
     border: none;
     float: left;
   }
+
   .hide {
     display: none;
+  }
+
+  .second {
+    height: 50px;
+    margin: 10px 0;
+  }
+
+  .third {
+    clear: both;
+    position: relative;
+    width: 200px;
+  }
+
+  .legend {
+    width: 200px;
+    height: 200px;
+  }
+
+  .third svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .third svg line {
+    stroke-width: 5;
+    stroke: #000;
+    fill: none;
+    stroke-dasharray: 200;
+    -webkit-transition: -webkit-transform .6s ease-out;
+    transition: transform .6s ease-out;
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+  }
+
+  .third:hover svg line.top {
+    -webkit-transform: translateX(-400px);
+    transform: translateX(-400px);
+  }
+
+  .third:hover svg line.bottom {
+    -webkit-transform: translateX(400px);
+    transform: translateX(400px);
+  }
+
+  .third:hover svg line.left {
+    -webkit-transform: translateY(400px);
+    transform: translateY(400px);
+  }
+
+  .third:hover svg line.right {
+    -webkit-transform: translateY(-400px);
+    transform: translateY(-400px);
+  }
+
+  .third svg line.top,
+  .third svg line.bottom {
+    stroke-dasharray: 330 240;
+  }
+
+  .third svg line.left,
+  .third svg line.right {
+    stroke-dasharray: 490 400;
   }
   </style>
 </head>
@@ -50,11 +115,22 @@
     </path>
   </svg>
   <br/>
-  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="50" id="svg2" viewBox="0 0 100 50">
-    <path id="curve2" opacity="0.5" stroke="#aaa" stroke-width='5' stroke-dasharray="400 400" d="M0,0 100,0 100,50 0,50z">
-    </path>
-  </svg>
-  <div class="btn">Button</div>
+  <div class="second">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="50" id="svg2" viewBox="0 0 100 50">
+      <path id="curve2" opacity="0.5" stroke="#aaa" stroke-width='5' stroke-dasharray="400 400" d="M0,0 100,0 100,50 0,50z">
+      </path>
+    </svg>
+    <div class="btn">Button</div>
+  </div>
+  <div class="third">
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" id="svg2" viewBox="0 0 200 200">
+      <line class="top" x1="0" y1="0" x2="600" y2="0" />
+      <line class="left" x1="0" y1="200" x2="0" y2="-400" />
+      <line class="bottom" x1="200" y1="200" x2="-400" y2="200" />
+      <line class="right" x1="200" y1="0" x2="200" y2="600" />
+    </svg>
+    <div class="legend">legend</div>
+  </div>
 </body>
 <script type="text/javascript">
 window.addEventListener('load', function() {
@@ -88,7 +164,7 @@ window.addEventListener('load', function() {
   var btn = document.querySelector('.btn');
   var offset = 400;
 
-  var interval_id = setInterval(function () {
+  var interval_id = setInterval(function() {
     offset -= 1;
     if (offset <= 0) {
       clearInterval(interval_id);
