@@ -8,6 +8,7 @@
     width: 920px;
     margin: 30px auto;
   }
+
   svg {
     fill: none;
     stroke: green;
@@ -27,10 +28,12 @@
   mask rect {
     stroke: none;
   }
+
   text {
     stroke-width: 1;
     stroke: black;
   }
+
   g rect {
     stroke: none;
   }
@@ -55,28 +58,35 @@
   </svg>
   <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
     <defs>
-      <mask id="redmask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
-        <rect id="rect" x="0" y="0" width="1" height="1" fill="#f00"></rect>
-      </mask>
-      <mask id="greenmask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
-        <rect id="rect" x="0" y="0" width="1" height="1" fill="#0f0"></rect>
-      </mask>
-      <mask id="bluemask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
-        <rect id="rect" x="0" y="0" width="1" height="1" fill="#00f"></rect>
-      </mask>
-      <mask id="whitemask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
-        <rect id="rect" x="0" y="0" width="1" height="1" fill="#fff"></rect>
+      <mask id="flowermask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
+        <rect x="0" y="0" width="1" height="1" fill="blue"></rect>
       </mask>
     </defs>
-
+    <g style="mask: url(#flowermask)">
+      <image xlink:href="/images/flower2.svg" x="0" y="0" width="300" height="300"></image>
+    </g>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+    <defs>
+      <mask id="redmask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
+        <rect x="0" y="0" width="1" height="1" fill="#f00"></rect>
+      </mask>
+      <mask id="greenmask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
+        <rect x="0" y="0" width="1" height="1" fill="#0f0"></rect>
+      </mask>
+      <mask id="bluemask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
+        <rect x="0" y="0" width="1" height="1" fill="#00f"></rect>
+      </mask>
+      <mask id="whitemask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
+        <rect x="0" y="0" width="1" height="1" fill="#fff"></rect>
+      </mask>
+    </defs>
     <rect x="10" y="10" width="50" height="50" fill="#f00"></rect>
     <rect x="70" y="10" width="50" height="50" fill="#0f0"></rect>
     <rect x="130" y="10" width="50" height="50" fill="#00f"></rect>
     <rect x="190" y="10" width="50" height="50" fill="#fff"></rect>
-
     <rect x="10" y="72" width="250" height="5" fill="yellow"></rect>
     <rect x="10" y="112" width="250" height="5" fill="yellow"></rect>
-
     <g style="mask: url(#redmask)">
       <circle cx="35" cy="115" r="25" style="fill: black"></circle>
     </g>
@@ -93,27 +103,24 @@
   <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
     <defs>
       <mask id="fullmask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
-        <rect id="rect" x="0" y="0" width="1" height="1" fill="white" fill-opacity="1"></rect>
+        <rect x="0" y="0" width="1" height="1" fill="white" fill-opacity="1"></rect>
       </mask>
       <mask id="three-forths" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
-        <rect id="rect" x="0" y="0" width="1" height="1" fill="white" fill-opacity="0.75"></rect>
+        <rect x="0" y="0" width="1" height="1" fill="white" fill-opacity="0.75"></rect>
       </mask>
       <mask id="one-half" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
-        <rect id="rect" x="0" y="0" width="1" height="1" fill="white" fill-opacity="0.5"></rect>
+        <rect x="0" y="0" width="1" height="1" fill="white" fill-opacity="0.5"></rect>
       </mask>
       <mask id="one-forth" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
-        <rect id="rect" x="0" y="0" width="1" height="1" fill="white" fill-opacity="0.25"></rect>
+        <rect x="0" y="0" width="1" height="1" fill="white" fill-opacity="0.25"></rect>
       </mask>
     </defs>
-
     <rect x="10" y="10" width="50" height="50" fill="white" fill-opacity="1"></rect>
     <rect x="70" y="10" width="50" height="50" fill="white" fill-opacity="0.75"></rect>
     <rect x="130" y="10" width="50" height="50" fill="white" fill-opacity="0.5"></rect>
     <rect x="190" y="10" width="50" height="50" fill="white" fill-opacity="0.25"></rect>
-
     <rect x="10" y="72" width="250" height="5" fill="yellow"></rect>
     <rect x="10" y="112" width="250" height="5" fill="yellow"></rect>
-
     <g style="mask: url(#fullmask)">
       <circle cx="35" cy="115" r="25" style="fill: black"></circle>
     </g>
