@@ -15,6 +15,28 @@
     width: 920px;
     margin: 30px auto;
   }
+
+  .btn {
+    width: 100px;
+    height: 50px;
+    display: inline-block;
+    background-color: #cfc;
+    color: #333;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: fantasy;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 5px;
+    display: none;
+  }
+  #svg2 {
+    border: none;
+    float: left;
+  }
+  .hide {
+    display: none;
+  }
   </style>
 </head>
 
@@ -27,6 +49,12 @@
       c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z">
     </path>
   </svg>
+  <br/>
+  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="50" id="svg2" viewBox="0 0 100 50">
+    <path id="curve2" opacity="0.5" stroke="#aaa" stroke-width='5' stroke-dasharray="400 400" d="M0,0 100,0 100,50 0,50z">
+    </path>
+  </svg>
+  <div class="btn">Button</div>
 </body>
 <script type="text/javascript">
 window.addEventListener('load', function() {
@@ -48,10 +76,27 @@ window.addEventListener('load', function() {
     if (offset > 0 || length > 50) {
       acc = false;
     }
-    if (offset < -497) {offset = -148}
+    if (offset < -497) {
+      offset = -148
+    }
     el.style.strokeDashoffset = offset;
     el.style.strokeDasharray = length + " 300";
   }, 10);
+
+  var el2 = document.querySelector('#curve2');
+  var svg2 = document.querySelector('#svg2')
+  var btn = document.querySelector('.btn');
+  var offset = 400;
+
+  var interval_id = setInterval(function () {
+    offset -= 1;
+    if (offset <= 0) {
+      clearInterval(interval_id);
+      svg2.className.baseVal += 'hide';
+      btn.style.display = 'block';
+    }
+    el2.style.strokeDashoffset = offset;
+  }, 50)
 });
 </script>
 
