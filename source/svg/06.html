@@ -31,6 +31,9 @@
     stroke-width: 1;
     stroke: black;
   }
+  g rect {
+    stroke: none;
+  }
   </style>
 </head>
 
@@ -41,7 +44,14 @@
         <circle cx="100" cy="100" r="50"></circle>
       </clipPath>
     </defs>
-    <rect x="10" y="10" width="200" height="200" fill="yellow" clip-path="url(#circle)"></rect>
+    <g clip-path="url(#circle)">
+      <rect x="10" y="40" width="200" height="20" fill="purple"></rect>
+      <rect x="10" y="60" width="200" height="20" fill="red"></rect>
+      <rect x="10" y="80" width="200" height="20" fill="orange"></rect>
+      <rect x="10" y="100" width="200" height="20" fill="yellow"></rect>
+      <rect x="10" y="120" width="200" height="20" fill="green"></rect>
+      <rect x="10" y="140" width="200" height="20" fill="blue"></rect>
+    </g>
   </svg>
   <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
     <defs>
