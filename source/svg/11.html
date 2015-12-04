@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>交互</title>
+  <style>
+  svg {
+    fill: none;
+    stroke: green;
+    stroke-width: 2;
+    border: solid 1px #d5d5d5;
+  }
+
+  body {
+    width: 920px;
+    margin: 30px auto;
+  }
+  </style>
+</head>
+
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+    <path id="outline" stroke-width="5" style="stroke-dashoffset:-148;stroke-dasharray:50 300" d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1
+      c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z">
+    </path>
+    <path id="curve" opacity="0.5" d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1
+      c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z">
+    </path>
+  </svg>
+</body>
+<script type="text/javascript">
+window.addEventListener('load', function() {
+  var el = document.querySelector('#outline');
+  var offset = -148;
+  var length = 50;
+  var acc = false;
+  setInterval(function() {
+    if (acc) {
+      offset -= 3;
+      // length += 5;
+    } else {
+      offset -= 3;
+      // length -= 5;
+    }
+    if (offset < -300 || length < 20) {
+      acc = true;
+    }
+    if (offset > 0 || length > 50) {
+      acc = false;
+    }
+    if (offset < -497) {offset = -148}
+    el.style.strokeDashoffset = offset;
+    el.style.strokeDasharray = length + " 300";
+  }, 10);
+});
+</script>
+
+</html>

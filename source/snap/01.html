@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <style>
+  body {
+    width: 920px;
+    margin: 30px auto;
+  }
+
+  svg {
+    border: solid 1px #d5d5d5;
+  }
+  </style>
+  <script type="text/javascript" src="/bower_components/snap.svg/dist/snap.svg.js"></script>
+</head>
+
+<body>
+  <svg id="svg" width="500" height="500"></svg>
+</body>
+<script type="text/javascript">
+window.addEventListener('load', function() {
+  var s = Snap("#svg");
+  // Lets create big circle in the middle:
+  var bigCircle = s.circle(150, 150, 100);
+  // By default its black, lets change its attributes
+  bigCircle.attr({
+    fill: "#bada55",
+    stroke: "#000",
+    strokeWidth: 5
+  });
+  // Now lets create another small circle:
+  var smallCircle = s.circle(100, 150, 70);
+  // Lets put this small circle and another one into a group:
+  var discs = s.group(smallCircle, s.circle(200, 150, 70));
+  // Now we can change attributes for the whole group
+  discs.attr({
+    fill: "#fff"
+  });
+});
+</script>
+
+</html>
