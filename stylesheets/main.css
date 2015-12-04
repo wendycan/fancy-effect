@@ -4,6 +4,10 @@ body {
   background: #309161 url(/images/pattern.png) repeat scroll top left
 }
 
+hr {
+  border-color: #8CD9B3;
+}
+
 .container {
   width: 800px;
   margin: 0 auto;
