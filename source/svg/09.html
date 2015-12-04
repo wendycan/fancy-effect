@@ -7,7 +7,7 @@
   svg {
     fill: none;
     stroke: green;
-    stroke-width: 5;
+    stroke-width: 2;
     border: solid 1px #d5d5d5;
   }
 
@@ -19,8 +19,22 @@
 </head>
 
 <body>
-  <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 500 500">
-    <rect x="10" y="10" width="400" height="200"></rect>
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 500 500">
+    <rect x="10" y="10" width="400" height="200">
+      <animate id="r1" attributeName="width" attributeType="XML" from="400" to="20" begin="0s" dur="5s" fill="freeze"></animate>
+    </rect>
+    <rect x="10" y="250" width="400" height="200" fill="orange">
+      <animate attributeName="width" attributeType="XML" from="400" to="20" begin="r1.end" dur="5s" fill="freeze"></animate>
+      <animate attributeName="height" attributeType="XML" from="200" to="20" begin="r1.end" dur="5s" fill="freeze"></animate>
+      <animate attributeName="fill-opacity" attributeType="CSS" from="0.25" to="1" begin="r1.end" dur="2s" fill="freeze"></animate>
+      <animate attributeName="fill-opacity" attributeType="CSS" from="1" to="0.25" begin="r1.end+3s" dur="2s" fill="freeze"></animate>
+    </rect>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+    <path d="M50,125C100,25 150,225 220,125"></path>
+    <path d="M-10,-3 L10,-3 L0,-25z" fill="yellow" stroke="red">
+      <animateMotion path="M50,125C100,25 150,225 220,125" dur="5s" fill="freeze" rotate="auto"></animateMotion>
+    </path>
   </svg>
 </body>
 
