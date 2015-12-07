@@ -19,6 +19,7 @@
 
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 1000 1000">
+    <!-- Translate -->
     <g id="house">
       <polyline points="300,100 200,200 400,200 300,100"></polyline>
       <polyline points="200,200 200,400 400,400 400,200"></polyline>
@@ -26,26 +27,28 @@
     </g>
     <use xlink:href="#house" stroke="blue" transform="translate(300,0)"></use>
 
+    <!-- Scale: stroke-width -->
     <rect x="10" y="10" width="50" height="50" id="rect" stroke-width="6"></rect>
     <use xlink:href="#rect" stroke="blue" transform="scale(3)"></use>
-    <!-- <use xlink:href="#rect" stroke="blue" transform="scale(3)" stroke-width="0.33"></use> -->
 
-    <!-- <use xlink:href="#rect" stroke="blue" transform="scale(3, 1.5)"></use> -->
+    <!-- <use xlink:href="#rect" stroke="blue" transform="scale(3)" stroke-width="0.33"></use>
+    <use xlink:href="#rect" stroke="blue" transform="scale(3, 1.5)"></use> -->
 
     <rect x="10" y="250" width="150" height="150" stroke-width="18"></rect>
     <line x1="10" y1="500" x2="300" y2="500"></line>
     <line x1="10" y1="500" x2="10" y2="700"></line>
 
+    <!-- Order -->
+    <rect x="10" y="500" width="100" height="100" fill="yellow"></rect>
 
-   <!--  <rect x="10" y="500" width="100" height="100" fill="yellow"></rect>
     <g transform="translate(50,50)">
       <g transform="scale(1.5)">
         <rect x="10" y="500" width="100" height="100" fill="yellow"></rect>
       </g>
     </g>
+
     <line x1="65" y1="800" x2="300" y2="800" stroke="purple"></line>
     <line x1="65" y1="800" x2="65" y2="1000" stroke="purple"></line>
- -->
 
     <g transform="scale(1.5)">
       <g transform="translate(50, 50)">
@@ -57,13 +60,15 @@
 
   </svg>
   <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+    <!-- Rotate: center -->
     <defs>
       <rect x="100" y="100" width="100" height="100" id="square"></rect>
     </defs>
     <g id="rotate-square">
-      <use xlink:href="#square" stroke="orange" transform="translate(-50, 50)"></use>
+      <use xlink:href="#square" stroke="orange"></use>
     </g>
 
+    <!-- Skew -->
     <rect x="0" y="0" width="100" height="100" stroke="gray"></rect>
     <g transform="skewX(45)">
       <line x1="0" y1="0" x2="100" y2="0" stroke="purple"></line>
