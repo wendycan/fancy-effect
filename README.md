@@ -8,4 +8,9 @@ $ bower install
 $ python -m SimpleHTTPServer
 ```
 
-Open your browser, input: http://localhost:8000。
+Open your browser, input:
+
+``` sh
+http://localhost:8000。
+```
+
