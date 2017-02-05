@@ -12,11 +12,10 @@ function Main() {
   this.loadSpriteSheet()
 }
 
-Main.prototype.update = function () {
+Main.prototype.update = function() {
   this.scroller.moveViewportXBy(this.scrollSpeed)
   this.scrollSpeed += Main.SCROLL_ACCELERATION;
-  if (this.scrollSpeed > Main.MAX_SCROLL_SPEED)
-  {
+  if (this.scrollSpeed > Main.MAX_SCROLL_SPEED) {
     this.scrollSpeed = Main.MAX_SCROLL_SPEED;
   }
 
@@ -24,14 +23,14 @@ Main.prototype.update = function () {
   requestAnimFrame(this.update.bind(this))
 }
 
-Main.prototype.loadSpriteSheet = function () {
+Main.prototype.loadSpriteSheet = function() {
   var assetsToLoad = ['/resources/wall.json']
   loader = new PIXI.AssetLoader(assetsToLoad)
   loader.onComplete = this.spriteSheetLoaded.bind(this)
   loader.load()
 }
 
-Main.prototype.spriteSheetLoaded = function () {
+Main.prototype.spriteSheetLoaded = function() {
   this.scroller = new Scroller(this.stage)
   requestAnimFrame(this.update.bind(this))
 }

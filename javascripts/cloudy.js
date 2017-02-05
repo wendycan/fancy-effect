@@ -158,7 +158,7 @@
     textCTX.clearRect(0, 0, 600, 200);
     textCTX.font = "400 " + fontSize + "px 'Source Sans Pro'"; // [font-weight, font-size, font-family]
     textCTX.textAlign = 'center';
-    textCTX.textBaseline = 'top';  // default alphabetic
+    textCTX.textBaseline = 'top'; // default alphabetic
     textCTX.fillText(t, 300, (172 - fontSize) / 2); // [text, x, y, maxWidth] why 300 ?
 
     var ctx = document.getElementById('text').getContext('2d');

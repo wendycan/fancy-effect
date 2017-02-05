@@ -1,4 +1,4 @@
-function Tree (x, y, speed) {
+function Tree(x, y, speed) {
   var texture = PIXI.Texture.fromImage('/resources/tree.png')
   PIXI.Sprite.call(this, texture)
 
@@ -14,20 +14,20 @@ function Tree (x, y, speed) {
 Tree.prototype = Object.create(PIXI.Sprite.prototype)
 Tree.prototype.constructor = Tree
 
-Tree.prototype.setViewportX = function (newViewportX) {
+Tree.prototype.setViewportX = function(newViewportX) {
   this.viewportX = this.checkViewportXBounds(newViewportX)
 
   this.position.x = this.viewportX
 }
 
-Tree.prototype.scaleY = function () {
+Tree.prototype.scaleY = function() {
   if (this.currentHeight > 240) {
     this.increase = false
     this.currentHeight -= 0.3
     this.height = this.currentHeight
     return
   }
-  if (this.currentHeight < 200){
+  if (this.currentHeight < 200) {
     this.increase = true
     this.currentHeight += 0.3
     this.height = this.currentHeight
@@ -47,8 +47,7 @@ Tree.prototype.scaleY = function () {
 Tree.prototype.checkViewportXBounds = function(viewportX) {
   var maxViewportX = 800
   var randomDeltaX = Math.ceil(Math.random() * 500)
-  if (viewportX < -300)
-  {
+  if (viewportX < -300) {
     viewportX = maxViewportX + randomDeltaX
   }
   return viewportX

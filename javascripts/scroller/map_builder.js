@@ -11,7 +11,7 @@ MapBuilder.WALL_HEIGHTS = [
   128 // Highest slice
 ];
 
-MapBuilder.prototype.createMap = function () {
+MapBuilder.prototype.createMap = function() {
   this.createWallSpan(3, 9, true);
   this.createGap(1);
   this.createWallSpan(1, 30);
@@ -50,13 +50,13 @@ MapBuilder.prototype.createMap = function () {
   this.createGap(20);
 };
 
-MapBuilder.prototype.createGap = function (spanLength) {
+MapBuilder.prototype.createGap = function(spanLength) {
   for (var i = 0; i < spanLength; i++) {
     this.walls.addSlice(SliceType.GAP);
   }
 };
 
-MapBuilder.prototype.createWallSpan = function (
+MapBuilder.prototype.createWallSpan = function(
   heightIndex, spanLength, noFront, noBack
 ) {
   noFront = noFront || false;
@@ -78,7 +78,7 @@ MapBuilder.prototype.createWallSpan = function (
   }
 };
 
-MapBuilder.prototype.createSteppedWallSpan = function (
+MapBuilder.prototype.createSteppedWallSpan = function(
   heightIndex, spanALength, spanBLength
 ) {
   if (heightIndex < 2) {
@@ -90,17 +90,17 @@ MapBuilder.prototype.createSteppedWallSpan = function (
   this.createWallSpan(heightIndex - 2, spanBLength - 1, true, false);
 };
 
-MapBuilder.prototype.addWallFront = function (heightIndex) {
+MapBuilder.prototype.addWallFront = function(heightIndex) {
   var y = MapBuilder.WALL_HEIGHTS[heightIndex];
   this.walls.addSlice(SliceType.FRONT, y);
 };
 
-MapBuilder.prototype.addWallBack = function (heightIndex) {
+MapBuilder.prototype.addWallBack = function(heightIndex) {
   var y = MapBuilder.WALL_HEIGHTS[heightIndex];
   this.walls.addSlice(SliceType.BACK, y);
 };
 
-MapBuilder.prototype.addWallMid = function (heightIndex, spanLength) {
+MapBuilder.prototype.addWallMid = function(heightIndex, spanLength) {
   var y = MapBuilder.WALL_HEIGHTS[heightIndex];
   for (var i = 0; i < spanLength; i++) {
     if (i % 2 == 0) {
@@ -111,8 +111,7 @@ MapBuilder.prototype.addWallMid = function (heightIndex, spanLength) {
   }
 };
 
-MapBuilder.prototype.addWallStep = function (heightIndex) {
+MapBuilder.prototype.addWallStep = function(heightIndex) {
   var y = MapBuilder.WALL_HEIGHTS[heightIndex];
   this.walls.addSlice(SliceType.STEP, y);
 };
-

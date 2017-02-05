@@ -25,7 +25,7 @@ function start() {
 
   var ballTexture = new PIXI.Texture.fromImage("/resources/pixel.png");
 
-   renderer = new PIXI.autoDetectRenderer(
+  renderer = new PIXI.autoDetectRenderer(
     w,
     h, {
       view: document.getElementById('game-canvas')
@@ -317,4 +317,3 @@ function update() {
 
   requestAnimFrame(update);
 }
-

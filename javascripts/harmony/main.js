@@ -11,7 +11,7 @@ function init() {
   update()
 }
 
-function loadObject () {
+function loadObject() {
   clouds = []
   trees = []
   cloud1 = new Cloud(800, 0, 1)
@@ -51,7 +51,7 @@ function loadObject () {
   stage.addChild(butterfly)
 }
 
-function update () {
+function update() {
   for (var i = 0; i < clouds.length; i++) {
     clouds[i].setViewportX(clouds[i].viewportX - clouds[i].speed)
     clouds[i].scaleX()
