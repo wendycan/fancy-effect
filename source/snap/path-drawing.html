@@ -9,6 +9,7 @@
   <style>
     body {
       background-color: #000;
+      font-family: sans-serif;
     }
     p {
       color: white;
@@ -24,120 +25,112 @@
 </head>
 
 <body style="text-align:center;">
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
   <div data-src="/images/personalizado.svg" class="inline-svg draw skrollable"></div>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
-  <p>1</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
+  <p>|</p>
 
   <script type="text/javascript">
   $(document).ready(function(){
-  $(".draw").each(function(){
-    var cur=$(this);
-    cur.attr("data-"+cur.height()+"-bottom","@data-v:0");
-    cur.attr("data-80-center","@data-v:1");
-    cur.attr("data-v",0);
-  })
-  $(".inline-svg").each(function(){
-    var cur=$(this);
+    $(".inline-svg").each(function(){
+      var current=$(this);
 
-    w=cur.width();
-    h=cur.height();
-    cur.css({
-      width:w,
-      height:h
+      // Set skrollr value
+      current.attr("data-"+current.height()+"-bottom","@data-v:0");
+      current.attr("data-center","@data-v:1");
+      current.attr("data-v",0);
+
+      var w=current.width();
+      var h=current.height();
+
+      var svg=Snap(w,h);
+
+      Snap.load(current.data("src"),function(f){
+        svg.append(f);
+        current.data("loaded",true)
+      })
+
+      svg.appendTo(current[0]);
+      current.data("snap",svg);
     });
 
-    var svg=Snap(w,h);
-
-    Snap.load(cur.data("src"),function(f){
-      svg.append(f);
-      cur.data("loaded",true)
-    })
-
-    svg.appendTo(cur.get(0));
-    cur.data("snap",svg);
-  });
-
-  function updateDrawings(){
-    $(".draw").each(function(){
-      var cur=$(this);
-      var lastV=cur.data("last-v");
-      var v=cur.attr("data-v");
-      if(lastV!=v){
-        if(cur.hasClass("line")){
-          cur.css({
-            transform:"scale("+v+",1)"
-          })
-        }
-        if(cur.data("loaded")){
-          var snap=$(this).data("snap");
-          if(snap!=null){
-            var path=snap.selectAll("path,line,polyline,polygon,ellipse");
-            path.forEach(function(i){
-              var l=i.attr("data-length");
-              if(l==null){
-                l=i.getTotalLength();
-                i.attr("data-length",l);
-              }
-              if(typeof(l)=="undefined"){
-                l=1000;
-              }
-              i.attr({strokeDasharray:(v*l)+","+l});
+    function updateDrawings(){
+      $(".inline-svg").each(function(){
+        var current=$(this);
+        var lastV=current.data("last-v");
+        var v=current.attr("data-v");
+        if(lastV!=v){
+          if(current.hasClass("line")){
+            current.css({
+              transform:"scale("+v+",1)"
             })
           }
-          cur.data("last-v",v);
+          if(current.data("loaded")){
+            var snap=$(this).data("snap");
+            if(snap!=null){
+              var path=snap.selectAll("path,line,polyline,polygon,ellipse");
+              path.forEach(function(i){
+                var l=i.attr("data-length");
+                if(l==null){
+                  l=i.getTotalLength();
+                  i.attr("data-length",l);
+                }
+                if(typeof(l)=="undefined"){
+                  l=1000;
+                }
+                i.attr({strokeDasharray:(v*l)+","+l});
+              })
+            }
+            current.data("last-v",v);
+          }
         }
-      }
-    });
-    requestAnimationFrame(updateDrawings);
-  }
+      });
 
-  updateDrawings();
-  skrollr.init({
-    smoothScrolling: true,
-    smoothScrollingDuration: 350,
-    mobileDeceleration:0.005
-  });
-})
+      requestAnimationFrame(updateDrawings);
+    }
+
+    updateDrawings();
+    skrollr.init();
+  })
   </script>
 
 </body>
