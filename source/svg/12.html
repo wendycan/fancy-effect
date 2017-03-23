@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>示例</title>
+  <style>
+    body {
+      width: 920px;
+      margin: 30px auto;
+    }
+    circle {
+      fill: none;
+      stroke: #eee;
+      stroke-width: 60px;
+      transform: translate(50%, 50%) rotate(0deg);
+    }
+    .success-circle {
+        stroke: #209e85;
+        stroke-dasharray: 585px 985px;
+        transform: translate(50%, 50%) rotate(-90deg);
+    }
+    .failure-circle {
+        stroke: #f25755;
+        stroke-dasharray: 0 1285px 285px;
+        transform: translate(50%, 50%) rotate(-90deg);
+    }
+    .endpoint-line {
+        fill: #ddd;
+    }
+    .startpoint-flag {
+        fill: #ddd;
+    }
+    svg {
+        padding: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 500 500">
+    <circle cx="0%" cy="0%" r="50%" class="origin-circle"></circle>
+    <circle cx="0%" cy="0%" r="50%" class="failure-circle"></circle>
+    <circle cx="0%" cy="0%" r="50%" class="success-circle"></circle>
+    <polygon points="0,0 40,0 20,40" style="fill: #ddd;" class="startpoint-flag"/>
+    <polygon points="0,0 40,0 20,40" style="fill: #ddd;" class="endpoint-line"/>
+  </svg>
+</body>
+
+</html>
